@@ -1,0 +1,2311 @@
+{
+  "generatedAt": "2026-05-16T17:41:41.223Z",
+  "totalBytes": 118716752,
+  "count": 20,
+  "characters": [
+    {
+      "id": "chibi_crystal_rose_seraphine",
+      "baseId": "seraphine",
+      "displayName": "Crystal Rose Seraphine",
+      "filename": "chibi_crystal_rose_seraphine.glb",
+      "bytes": 6562800,
+      "hasHeadBone": true,
+      "headBoneName": "Neck",
+      "animations": [
+        {
+          "name": "Idle_Base",
+          "duration": 1.533
+        },
+        {
+          "name": "Taunt",
+          "duration": 3
+        },
+        {
+          "name": "Joke",
+          "duration": 3.9
+        },
+        {
+          "name": "Interact",
+          "duration": 1.533
+        },
+        {
+          "name": "Run_Haste",
+          "duration": 1
+        },
+        {
+          "name": "Run_Base",
+          "duration": 1
+        },
+        {
+          "name": "Cast_Animation",
+          "duration": 1.233
+        },
+        {
+          "name": "Cast_Cycle",
+          "duration": 0.867
+        },
+        {
+          "name": "Damage_Hurt",
+          "duration": 1.5
+        },
+        {
+          "name": "Death",
+          "duration": 2.5
+        },
+        {
+          "name": "Dive_In",
+          "duration": 1.167
+        },
+        {
+          "name": "Dive_Out",
+          "duration": 2.267
+        },
+        {
+          "name": "Cast_Damage",
+          "duration": 1.233
+        },
+        {
+          "name": "PetChibiSeraphine_CrystalRose_laugh.CHIBI_Seraphine_CrystalRose",
+          "duration": 6.3
+        },
+        {
+          "name": "Idle_In",
+          "duration": 1.667
+        },
+        {
+          "name": "Dance_In",
+          "duration": 0.867
+        },
+        {
+          "name": "Laugh_In",
+          "duration": 0.867
+        },
+        {
+          "name": "Dance_Loop",
+          "duration": 6.733
+        },
+        {
+          "name": "PetChibiSeraphine_CrystalRose_Taunt.CHIBI_Seraphine_CrystalRose",
+          "duration": 3
+        },
+        {
+          "name": "PetChibiSeraphine_CrystalRose_Finisher01.CHIBI_Seraphine_CrystalRose",
+          "duration": 2.5
+        },
+        {
+          "name": "PetChibiSeraphine_CrystalRose_Finisher02.CHIBI_Seraphine_CrystalRose",
+          "duration": 0.867
+        },
+        {
+          "name": "PetChibiSeraphine_CrystalRose_Finisher03.CHIBI_Seraphine_CrystalRose",
+          "duration": 1.9
+        },
+        {
+          "name": "PetChibiSeraphine_CrystalRose_Finisher04.CHIBI_Seraphine_CrystalRose",
+          "duration": 1.633
+        }
+      ]
+    },
+    {
+      "id": "chibi_divine_sword_irelia",
+      "baseId": "irelia",
+      "displayName": "Divine Sword Irelia",
+      "filename": "chibi_divine_sword_irelia.glb",
+      "bytes": 7440436,
+      "hasHeadBone": true,
+      "headBoneName": "Neck",
+      "animations": [
+        {
+          "name": "Idle_Base",
+          "duration": 1.2
+        },
+        {
+          "name": "Taunt",
+          "duration": 1.3
+        },
+        {
+          "name": "Idle_In",
+          "duration": 2.5
+        },
+        {
+          "name": "Joke_In",
+          "duration": 3.233
+        },
+        {
+          "name": "Interact",
+          "duration": 0.067
+        },
+        {
+          "name": "Recall",
+          "duration": 1.2
+        },
+        {
+          "name": "Recall_Winddown",
+          "duration": 1.2
+        },
+        {
+          "name": "Run_Haste",
+          "duration": 1.333
+        },
+        {
+          "name": "Dance_Loop",
+          "duration": 4.7
+        },
+        {
+          "name": "Dance_In",
+          "duration": 0.867
+        },
+        {
+          "name": "Run_Base",
+          "duration": 1.333
+        },
+        {
+          "name": "CAST",
+          "duration": 2.9
+        },
+        {
+          "name": "Cast_Cycle",
+          "duration": 0.8
+        },
+        {
+          "name": "Damage_Hurt",
+          "duration": 2.067
+        },
+        {
+          "name": "Death",
+          "duration": 2
+        },
+        {
+          "name": "Dive_In",
+          "duration": 1.733
+        },
+        {
+          "name": "Dive_Out",
+          "duration": 2.2
+        },
+        {
+          "name": "PetChibiIrelia_DivineSword_Idle.anm",
+          "duration": 1.2
+        },
+        {
+          "name": "Laugh_In",
+          "duration": 3.633
+        },
+        {
+          "name": "Idle1_In",
+          "duration": 1.667
+        },
+        {
+          "name": "Joke_Loop",
+          "duration": 1.4
+        },
+        {
+          "name": "Joke_Drink",
+          "duration": 1.4
+        },
+        {
+          "name": "Laugh_Loop",
+          "duration": 4
+        },
+        {
+          "name": "Finisher_01",
+          "duration": 3.633
+        },
+        {
+          "name": "Finisher_02",
+          "duration": 0.933
+        },
+        {
+          "name": "Finisher_03",
+          "duration": 0.467
+        },
+        {
+          "name": "Finisher_04",
+          "duration": 1.833
+        }
+      ]
+    },
+    {
+      "id": "chibi_guqin_sona",
+      "baseId": "sona",
+      "displayName": "Guqin Sona",
+      "filename": "chibi_guqin_sona.glb",
+      "bytes": 6860892,
+      "hasHeadBone": true,
+      "headBoneName": "Neck",
+      "animations": [
+        {
+          "name": "Idle_Base",
+          "duration": 2
+        },
+        {
+          "name": "Idle_In",
+          "duration": 1.233
+        },
+        {
+          "name": "Joke",
+          "duration": 5
+        },
+        {
+          "name": "Run_Haste",
+          "duration": 0.6
+        },
+        {
+          "name": "Dance_Loop",
+          "duration": 0.867
+        },
+        {
+          "name": "Dance_In",
+          "duration": 1.2
+        },
+        {
+          "name": "Run_Base",
+          "duration": 0.6
+        },
+        {
+          "name": "Cast_Cycle",
+          "duration": 1
+        },
+        {
+          "name": "Damage_Hurt",
+          "duration": 1.267
+        },
+        {
+          "name": "Death",
+          "duration": 1.833
+        },
+        {
+          "name": "Dive_In",
+          "duration": 1.2
+        },
+        {
+          "name": "Dive_Out",
+          "duration": 2.6
+        },
+        {
+          "name": "PetChibiSona_Guqin_Cast_damage.anm",
+          "duration": 1.5
+        },
+        {
+          "name": "PetChibiSona_Guqin_idle.anm",
+          "duration": 2
+        },
+        {
+          "name": "Laugh",
+          "duration": 6.1
+        },
+        {
+          "name": "Greeting",
+          "duration": 5
+        },
+        {
+          "name": "PetChibiSona_Guqin_taunt_in.anm",
+          "duration": 0.933
+        },
+        {
+          "name": "PetChibiSona_Guqin_taunt_loop.anm",
+          "duration": 1.3
+        },
+        {
+          "name": "Recall_Winddown",
+          "duration": 6.1
+        },
+        {
+          "name": "Recall",
+          "duration": 6.1
+        },
+        {
+          "name": "Interact",
+          "duration": 5
+        },
+        {
+          "name": "Finisher01",
+          "duration": 3.4
+        },
+        {
+          "name": "Finisher02",
+          "duration": 1.133
+        },
+        {
+          "name": "Finisher03",
+          "duration": 2.367
+        }
+      ]
+    },
+    {
+      "id": "chibi_gwen",
+      "baseId": "gwen",
+      "displayName": "Gwen",
+      "filename": "chibi_gwen.glb",
+      "bytes": 5503368,
+      "hasHeadBone": true,
+      "headBoneName": "Neck",
+      "animations": [
+        {
+          "name": "Idle_Base",
+          "duration": 1.6
+        },
+        {
+          "name": "PetChibiGwen_Base_tuant.anm",
+          "duration": 2.433
+        },
+        {
+          "name": "Idle_In",
+          "duration": 0.967
+        },
+        {
+          "name": "PetChibiGwen_Base_joke.anm",
+          "duration": 1.833
+        },
+        {
+          "name": "Run_Haste",
+          "duration": 0.733
+        },
+        {
+          "name": "Dance_Loop",
+          "duration": 3.767
+        },
+        {
+          "name": "Dance_In",
+          "duration": 2.233
+        },
+        {
+          "name": "Cast_Cycle",
+          "duration": 0.8
+        },
+        {
+          "name": "Damage_Hurt",
+          "duration": 1.767
+        },
+        {
+          "name": "Death",
+          "duration": 3.633
+        },
+        {
+          "name": "Dive_In",
+          "duration": 1.3
+        },
+        {
+          "name": "Dive_Out",
+          "duration": 2.533
+        },
+        {
+          "name": "Cast_Damage",
+          "duration": 1.3
+        },
+        {
+          "name": "Run",
+          "duration": 0.733
+        },
+        {
+          "name": "Run01",
+          "duration": 1.5
+        },
+        {
+          "name": "PetChibiGwen_Base_Doll_IdleIn.anm",
+          "duration": 0.967
+        },
+        {
+          "name": "Laugh01",
+          "duration": 4.067
+        },
+        {
+          "name": "Laugh02",
+          "duration": 0.6
+        },
+        {
+          "name": "Cast_Animation",
+          "duration": 1.3
+        },
+        {
+          "name": "Celebrate",
+          "duration": 3.767
+        },
+        {
+          "name": "Interact",
+          "duration": 1.833
+        },
+        {
+          "name": "Greeting",
+          "duration": 2.433
+        },
+        {
+          "name": "Recall",
+          "duration": 1.833
+        },
+        {
+          "name": "Recall_Winddown",
+          "duration": 1.833
+        }
+      ]
+    },
+    {
+      "id": "chibi_k_da_all_out_seraphine",
+      "baseId": "seraphine",
+      "displayName": "K Da All Out Seraphine",
+      "filename": "chibi_k_da_all_out_seraphine.glb",
+      "bytes": 5199180,
+      "hasHeadBone": true,
+      "headBoneName": "Neck",
+      "animations": [
+        {
+          "name": "Idle_Base",
+          "duration": 1.533
+        },
+        {
+          "name": "Taunt",
+          "duration": 3
+        },
+        {
+          "name": "Joke",
+          "duration": 3.9
+        },
+        {
+          "name": "Interact",
+          "duration": 1.533
+        },
+        {
+          "name": "Run_Haste",
+          "duration": 1
+        },
+        {
+          "name": "Run_Base",
+          "duration": 1
+        },
+        {
+          "name": "Cast_Animation",
+          "duration": 1.233
+        },
+        {
+          "name": "Cast_Cycle",
+          "duration": 0.867
+        },
+        {
+          "name": "Damage_Hurt",
+          "duration": 1.5
+        },
+        {
+          "name": "Death",
+          "duration": 2.5
+        },
+        {
+          "name": "Dive_In",
+          "duration": 1.167
+        },
+        {
+          "name": "Dive_Out",
+          "duration": 2.267
+        },
+        {
+          "name": "Cast_Damage",
+          "duration": 1.233
+        },
+        {
+          "name": "PetChibiSeraphine_Kda_laugh.CHIBI_Seraphine_KDA.anm",
+          "duration": 6.3
+        },
+        {
+          "name": "Idle_In",
+          "duration": 1.667
+        },
+        {
+          "name": "Dance_In",
+          "duration": 0.867
+        },
+        {
+          "name": "Laugh_In",
+          "duration": 0.867
+        },
+        {
+          "name": "Dance_Loop",
+          "duration": 6.733
+        },
+        {
+          "name": "Finisher",
+          "duration": 7
+        },
+        {
+          "name": "PetChibiSeraphine_Kda_Taunt.CHIBI_Seraphine_KDA.anm",
+          "duration": 3
+        }
+      ]
+    },
+    {
+      "id": "chibi_k_da_superfan_neeko",
+      "baseId": "neeko",
+      "displayName": "K Da Superfan Neeko",
+      "filename": "chibi_k_da_superfan_neeko.glb",
+      "bytes": 6636812,
+      "hasHeadBone": true,
+      "headBoneName": "Neck",
+      "animations": [
+        {
+          "name": "Idle_Base",
+          "duration": 1.333
+        },
+        {
+          "name": "Taunt",
+          "duration": 2.667
+        },
+        {
+          "name": "PetChibiNeeko_KDASuperFan_Joke02cycle.Chibi_Neeko_KDASuperFan",
+          "duration": 3.333
+        },
+        {
+          "name": "Interact",
+          "duration": 1.333
+        },
+        {
+          "name": "Recall",
+          "duration": 2.667
+        },
+        {
+          "name": "Recall_Winddown",
+          "duration": 2.667
+        },
+        {
+          "name": "Run_Haste",
+          "duration": 0.633
+        },
+        {
+          "name": "PetChibiNeeko_KDASuperFan_Run.Chibi_Neeko_KDASuperFan",
+          "duration": 0.633
+        },
+        {
+          "name": "Cast_Animation",
+          "duration": 1.333
+        },
+        {
+          "name": "Cast_Cycle",
+          "duration": 0.8
+        },
+        {
+          "name": "Damage_Hurt",
+          "duration": 1.2
+        },
+        {
+          "name": "Death",
+          "duration": 1.667
+        },
+        {
+          "name": "Dive_In",
+          "duration": 1.333
+        },
+        {
+          "name": "Dive_Out",
+          "duration": 2.267
+        },
+        {
+          "name": "Cast_Damage",
+          "duration": 1.333
+        },
+        {
+          "name": "PetChibiNeeko_KDASuperFan_Taunt.Chibi_Neeko_KDASuperFan",
+          "duration": 2.667
+        },
+        {
+          "name": "PetChibiNeeko_KDASuperFan_Taunt.Chibi_Neeko_KDASuperFan_2",
+          "duration": 2.667
+        },
+        {
+          "name": "PetChibiNeeko_KDASuperFan_Taunt.Chibi_Neeko_KDASuperFan_3",
+          "duration": 2.667
+        },
+        {
+          "name": "PetChibiNeeko_KDASuperFan_Taunt.Chibi_Neeko_KDASuperFan_4",
+          "duration": 2.667
+        },
+        {
+          "name": "PetChibiNeeko_KDASuperFan_Laugh.Chibi_Neeko_KDASuperFan",
+          "duration": 4.333
+        },
+        {
+          "name": "Idle_In",
+          "duration": 1.333
+        },
+        {
+          "name": "DanceIn",
+          "duration": 1.3
+        },
+        {
+          "name": "SG_Classroom_Intro",
+          "duration": 1.333
+        },
+        {
+          "name": "PetChibiNeeko_KDASuperFan_Taunt.Chibi_Neeko_KDASuperFan_5",
+          "duration": 2.667
+        },
+        {
+          "name": "DanceLoop",
+          "duration": 3.5
+        },
+        {
+          "name": "PetChibiNeeko_KDASuperFan_Joke01cycle.Chibi_Neeko_KDASuperFan",
+          "duration": 2.033
+        },
+        {
+          "name": "PetChibiNeeko_KDASuperFan_Joke01intro.Chibi_Neeko_KDASuperFan",
+          "duration": 0.367
+        },
+        {
+          "name": "PetChibiNeeko_KDASuperFan_Joke02intro.Chibi_Neeko_KDASuperFan",
+          "duration": 0.333
+        },
+        {
+          "name": "PetChibiNeeko_KDASuperFan_Runomato.Chibi_Neeko_KDASuperFan",
+          "duration": 2
+        },
+        {
+          "name": "PetChibiNeeko_KDASuperFan_Laugh.Chibi_Neeko_KDASuperFan_2",
+          "duration": 4.333
+        },
+        {
+          "name": "PetChibiNeeko_KDASuperFan_idlein02.Chibi_Neeko_KDASuperFan",
+          "duration": 1.3
+        },
+        {
+          "name": "PetChibiNeeko_KDASuperFan_Joke03intro.Chibi_Neeko_KDASuperFan",
+          "duration": 0.433
+        },
+        {
+          "name": "PetChibiNeeko_KDASuperFan_Joke03cycle.Chibi_Neeko_KDASuperFan",
+          "duration": 2.333
+        },
+        {
+          "name": "Finisher01",
+          "duration": 1.167
+        },
+        {
+          "name": "Finisher02",
+          "duration": 2.867
+        },
+        {
+          "name": "Finisher03",
+          "duration": 0.433
+        },
+        {
+          "name": "Finisher04",
+          "duration": 0.7
+        },
+        {
+          "name": "PetChibiNeeko_KDASuperFan_finisher_c05.Chibi_Neeko_KDASuperFan",
+          "duration": 1.7
+        }
+      ]
+    },
+    {
+      "id": "chibi_lillia",
+      "baseId": "lillia",
+      "displayName": "Lillia",
+      "filename": "chibi_lillia.glb",
+      "bytes": 4437136,
+      "hasHeadBone": true,
+      "headBoneName": "Neck",
+      "animations": [
+        {
+          "name": "Idle_Base",
+          "duration": 2
+        },
+        {
+          "name": "PetChibiLillia_Base_Taunt.CHIBI_Lillia_Base.anm",
+          "duration": 1.5
+        },
+        {
+          "name": "Joke_In",
+          "duration": 1.6
+        },
+        {
+          "name": "Interact",
+          "duration": 2
+        },
+        {
+          "name": "Recall",
+          "duration": 2
+        },
+        {
+          "name": "Recall_Winddown",
+          "duration": 2
+        },
+        {
+          "name": "Run_Haste",
+          "duration": 1
+        },
+        {
+          "name": "Run_Base",
+          "duration": 1
+        },
+        {
+          "name": "Cast_Animation",
+          "duration": 1.4
+        },
+        {
+          "name": "Cast_Cycle",
+          "duration": 0.8
+        },
+        {
+          "name": "Damage_Hurt",
+          "duration": 2
+        },
+        {
+          "name": "Death",
+          "duration": 1.4
+        },
+        {
+          "name": "Dive_In",
+          "duration": 1.333
+        },
+        {
+          "name": "Dive_Out",
+          "duration": 2.4
+        },
+        {
+          "name": "Cast_Damage",
+          "duration": 1.4
+        },
+        {
+          "name": "PetChibiLillia_Base_Idle.CHIBI_Lillia_Base.anm",
+          "duration": 2
+        },
+        {
+          "name": "Laugh",
+          "duration": 3.333
+        },
+        {
+          "name": "Idle_In",
+          "duration": 1.267
+        },
+        {
+          "name": "Dance_In",
+          "duration": 0.567
+        },
+        {
+          "name": "SG_Classroom_Intro",
+          "duration": 2
+        },
+        {
+          "name": "Joke_Loop",
+          "duration": 1.333
+        },
+        {
+          "name": "Dance_Loop",
+          "duration": 1.867
+        },
+        {
+          "name": "PetChibiLillia_Base_Taunt_loop.CHIBI_Lillia_Base.anm",
+          "duration": 0.633
+        }
+      ]
+    },
+    {
+      "id": "chibi_lulu",
+      "baseId": "lulu",
+      "displayName": "Lulu",
+      "filename": "chibi_lulu.glb",
+      "bytes": 4882512,
+      "hasHeadBone": true,
+      "headBoneName": "Neck",
+      "animations": [
+        {
+          "name": "Idle_Base",
+          "duration": 1.167
+        },
+        {
+          "name": "Taunt",
+          "duration": 6
+        },
+        {
+          "name": "Idle_In",
+          "duration": 0.9
+        },
+        {
+          "name": "PetChibiLulu_Base_Main_Joke.CHIBI_Lulu_Base.anm",
+          "duration": 4.5
+        },
+        {
+          "name": "Run_Haste",
+          "duration": 0.8
+        },
+        {
+          "name": "Dance_Loop",
+          "duration": 1.8
+        },
+        {
+          "name": "Dance_In",
+          "duration": 0.467
+        },
+        {
+          "name": "Run_Base",
+          "duration": 0.6
+        },
+        {
+          "name": "Cast_Animation",
+          "duration": 1.133
+        },
+        {
+          "name": "Cast_Cycle",
+          "duration": 0.867
+        },
+        {
+          "name": "Damage_Hurt",
+          "duration": 1.867
+        },
+        {
+          "name": "Death",
+          "duration": 2.333
+        },
+        {
+          "name": "Dive_In",
+          "duration": 1.1
+        },
+        {
+          "name": "Dive_Out",
+          "duration": 2.3
+        },
+        {
+          "name": "Cast_Damage",
+          "duration": 1.133
+        },
+        {
+          "name": "PetChibiLulu_Base_Main_idle.CHIBI_Lulu_Base.anm",
+          "duration": 1.167
+        },
+        {
+          "name": "Laugh",
+          "duration": 4.833
+        }
+      ]
+    },
+    {
+      "id": "chibi_morgana",
+      "baseId": "morgana",
+      "displayName": "Morgana",
+      "filename": "chibi_morgana.glb",
+      "bytes": 4565640,
+      "hasHeadBone": true,
+      "headBoneName": "Neck",
+      "animations": [
+        {
+          "name": "Idle_Base",
+          "duration": 2.667
+        },
+        {
+          "name": "Taunt_In",
+          "duration": 0.833
+        },
+        {
+          "name": "PetChibiMorgana_Base_Dancein.anm",
+          "duration": 0.3
+        },
+        {
+          "name": "Idle_In",
+          "duration": 1.033
+        },
+        {
+          "name": "Joke",
+          "duration": 3.8
+        },
+        {
+          "name": "Recall",
+          "duration": 4.333
+        },
+        {
+          "name": "Recall_Winddown",
+          "duration": 4.333
+        },
+        {
+          "name": "Run_Haste",
+          "duration": 1
+        },
+        {
+          "name": "Dance_Loop",
+          "duration": 4.333
+        },
+        {
+          "name": "Dance_In",
+          "duration": 0.3
+        },
+        {
+          "name": "Run_Base",
+          "duration": 0.867
+        },
+        {
+          "name": "Cast_Animation",
+          "duration": 1.833
+        },
+        {
+          "name": "Cast_Cycle",
+          "duration": 1
+        },
+        {
+          "name": "Damage_Hurt",
+          "duration": 1.333
+        },
+        {
+          "name": "Death",
+          "duration": 2
+        },
+        {
+          "name": "Dive_In",
+          "duration": 1.333
+        },
+        {
+          "name": "Dive_Out",
+          "duration": 2
+        },
+        {
+          "name": "Cast_Damage",
+          "duration": 1.833
+        },
+        {
+          "name": "PetChibiMorgana_Base_DanceLoop.anm",
+          "duration": 4.333
+        },
+        {
+          "name": "Laugh",
+          "duration": 7.733
+        },
+        {
+          "name": "Cast_To_Idle",
+          "duration": 1.833
+        },
+        {
+          "name": "Taunt_loop",
+          "duration": 2
+        },
+        {
+          "name": "PetChibiMorgana_Base_Taunt_In.anm",
+          "duration": 0.833
+        },
+        {
+          "name": "PetChibiMorgana_Base_Taunt_Loop.anm",
+          "duration": 2
+        },
+        {
+          "name": "Interact",
+          "duration": 2.667
+        }
+      ]
+    },
+    {
+      "id": "chibi_mythmaker_zoe",
+      "baseId": "zoe",
+      "displayName": "Mythmaker Zoe",
+      "filename": "chibi_mythmaker_zoe.glb",
+      "bytes": 6356460,
+      "hasHeadBone": true,
+      "headBoneName": "Neck",
+      "animations": [
+        {
+          "name": "Idle_Base",
+          "duration": 3.267
+        },
+        {
+          "name": "Taunt",
+          "duration": 4.4
+        },
+        {
+          "name": "Joke_In",
+          "duration": 3.367
+        },
+        {
+          "name": "PetChibiZoe_Mythmaker_Run_01.CHIBI_Zoe_Mythmaker.anm",
+          "duration": 1.733
+        },
+        {
+          "name": "Cast_Animation",
+          "duration": 1.067
+        },
+        {
+          "name": "Damage_Hurt",
+          "duration": 1.667
+        },
+        {
+          "name": "Death",
+          "duration": 1.633
+        },
+        {
+          "name": "Dive_In",
+          "duration": 1.167
+        },
+        {
+          "name": "Dive_Out",
+          "duration": 2
+        },
+        {
+          "name": "Cast_Damage",
+          "duration": 1.067
+        },
+        {
+          "name": "Laugh",
+          "duration": 6.067
+        },
+        {
+          "name": "Idle_In",
+          "duration": 1.067
+        },
+        {
+          "name": "PetChibiZoe_Mythmaker_Dance_01.CHIBI_Zoe_Mythmaker.anm",
+          "duration": 0.933
+        },
+        {
+          "name": "SG_Classroom_Intro",
+          "duration": 1.167
+        },
+        {
+          "name": "Run_02",
+          "duration": 2.033
+        },
+        {
+          "name": "Cast_In",
+          "duration": 2.133
+        },
+        {
+          "name": "PetChibiZoe_Mythmaker_Cast_Loop.CHIBI_Zoe_Mythmaker.anm",
+          "duration": 1.2
+        },
+        {
+          "name": "PetChibiZoe_Mythmaker_Dance_in.CHIBI_Zoe_Mythmaker.anm",
+          "duration": 0.6
+        },
+        {
+          "name": "PetChibiZoe_Mythmaker_Dance_03.CHIBI_Zoe_Mythmaker.anm",
+          "duration": 1.467
+        },
+        {
+          "name": "Joke_Loop",
+          "duration": 1.1
+        },
+        {
+          "name": "Finisher01",
+          "duration": 2.033
+        },
+        {
+          "name": "Finisher02",
+          "duration": 1.967
+        },
+        {
+          "name": "Finisher03",
+          "duration": 1.167
+        },
+        {
+          "name": "Finisher04",
+          "duration": 2.467
+        },
+        {
+          "name": "PetChibiZoe_Mythmaker_Joke_Cycle.CHIBI_Zoe_Mythmaker.anm",
+          "duration": 1.1
+        },
+        {
+          "name": "PetChibiZoe_Mythmaker_Joke_in.CHIBI_Zoe_Mythmaker.anm",
+          "duration": 3.367
+        }
+      ]
+    },
+    {
+      "id": "chibi_sona",
+      "baseId": "sona",
+      "displayName": "Sona",
+      "filename": "chibi_sona.glb",
+      "bytes": 4917096,
+      "hasHeadBone": true,
+      "headBoneName": "Neck",
+      "animations": [
+        {
+          "name": "Idle_Base",
+          "duration": 2
+        },
+        {
+          "name": "Idle_In",
+          "duration": 1.233
+        },
+        {
+          "name": "Joke",
+          "duration": 5
+        },
+        {
+          "name": "Run_Haste",
+          "duration": 0.6
+        },
+        {
+          "name": "Dance_Loop",
+          "duration": 0.867
+        },
+        {
+          "name": "Dance_In",
+          "duration": 1.2
+        },
+        {
+          "name": "Run_Base",
+          "duration": 0.6
+        },
+        {
+          "name": "Cast_Cycle",
+          "duration": 1
+        },
+        {
+          "name": "Damage_Hurt",
+          "duration": 1.267
+        },
+        {
+          "name": "Death",
+          "duration": 1.833
+        },
+        {
+          "name": "Dive_In",
+          "duration": 1.2
+        },
+        {
+          "name": "Dive_Out",
+          "duration": 2.6
+        },
+        {
+          "name": "PetChibiSona_Base_Cast_damage.anm",
+          "duration": 1.5
+        },
+        {
+          "name": "PetChibiSona_Base_idle.anm",
+          "duration": 2
+        },
+        {
+          "name": "Laugh",
+          "duration": 6.1
+        },
+        {
+          "name": "Greeting",
+          "duration": 5
+        },
+        {
+          "name": "PetChibiSona_Base_taunt_in.anm",
+          "duration": 0.967
+        },
+        {
+          "name": "PetChibiSona_Base_taunt_loop.anm",
+          "duration": 1.3
+        },
+        {
+          "name": "Recall_Winddown",
+          "duration": 6.1
+        },
+        {
+          "name": "Recall",
+          "duration": 6.1
+        },
+        {
+          "name": "Interact",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "id": "chibi_spirit_blossom_ahri",
+      "baseId": "ahri",
+      "displayName": "Spirit Blossom Ahri",
+      "filename": "chibi_spirit_blossom_ahri.glb",
+      "bytes": 8011544,
+      "hasHeadBone": true,
+      "headBoneName": "Neck",
+      "animations": [
+        {
+          "name": "Idle_Base",
+          "duration": 2
+        },
+        {
+          "name": "Taunt",
+          "duration": 2.567
+        },
+        {
+          "name": "Joke",
+          "duration": 3.433
+        },
+        {
+          "name": "Interact",
+          "duration": 2
+        },
+        {
+          "name": "Recall",
+          "duration": 5
+        },
+        {
+          "name": "Recall_Winddown",
+          "duration": 5
+        },
+        {
+          "name": "Run_Haste",
+          "duration": 0.667
+        },
+        {
+          "name": "Run_Base",
+          "duration": 0.667
+        },
+        {
+          "name": "Cast_Animation",
+          "duration": 1.067
+        },
+        {
+          "name": "Cast_Cycle",
+          "duration": 0.7
+        },
+        {
+          "name": "Damage_Hurt",
+          "duration": 1
+        },
+        {
+          "name": "Death",
+          "duration": 3.3
+        },
+        {
+          "name": "Dive_In",
+          "duration": 1.067
+        },
+        {
+          "name": "Dive_Out",
+          "duration": 2
+        },
+        {
+          "name": "Cast_Damage",
+          "duration": 1.067
+        },
+        {
+          "name": "PetChibiAhri_Blossom_Ctrl1.anm",
+          "duration": 3.433
+        },
+        {
+          "name": "PetChibiAhri_blossom_taunt.anm",
+          "duration": 2.567
+        },
+        {
+          "name": "Laugh",
+          "duration": 2.167
+        },
+        {
+          "name": "Idle_To_Run",
+          "duration": 0.333
+        },
+        {
+          "name": "Idle_In",
+          "duration": 1.067
+        },
+        {
+          "name": "Dance",
+          "duration": 5
+        },
+        {
+          "name": "SG_Classroom_Intro",
+          "duration": 1.067
+        },
+        {
+          "name": "Finisher",
+          "duration": 7.5
+        }
+      ]
+    },
+    {
+      "id": "chibi_spirit_blossom_yunara",
+      "baseId": "yunara",
+      "displayName": "Spirit Blossom Yunara",
+      "filename": "chibi_spirit_blossom_yunara.glb",
+      "bytes": 6776584,
+      "hasHeadBone": true,
+      "headBoneName": "Neck",
+      "animations": [
+        {
+          "name": "Idle_Base",
+          "duration": 2.667
+        },
+        {
+          "name": "PetChibiYunara_SpiritBlossom_Taunt01.CHIBI_Yunara_SpiritBlossom.anm",
+          "duration": 1.567
+        },
+        {
+          "name": "PetChibiYunara_SpiritBlossom_Joke_loop.CHIBI_Yunara_SpiritBlossom.anm",
+          "duration": 3.2
+        },
+        {
+          "name": "Interact",
+          "duration": 2.667
+        },
+        {
+          "name": "Recall",
+          "duration": 2.667
+        },
+        {
+          "name": "Recall_Winddown",
+          "duration": 2.667
+        },
+        {
+          "name": "Run_Haste",
+          "duration": 0.667
+        },
+        {
+          "name": "Run_Base",
+          "duration": 0.667
+        },
+        {
+          "name": "Cast_Animation",
+          "duration": 1.567
+        },
+        {
+          "name": "Cast_Cycle",
+          "duration": 1.333
+        },
+        {
+          "name": "Damage_Hurt",
+          "duration": 1.667
+        },
+        {
+          "name": "Death",
+          "duration": 1.667
+        },
+        {
+          "name": "Dive_In",
+          "duration": 1.4
+        },
+        {
+          "name": "Dive_Out",
+          "duration": 2.833
+        },
+        {
+          "name": "Cast_Damage",
+          "duration": 1.567
+        },
+        {
+          "name": "PetChibiYunara_SpiritBlossom_Idle.CHIBI_Yunara_SpiritBlossom.anm",
+          "duration": 2.667
+        },
+        {
+          "name": "Laugh_In",
+          "duration": 3
+        },
+        {
+          "name": "Idle_To_Run",
+          "duration": 2.667
+        },
+        {
+          "name": "Idle_In",
+          "duration": 1.167
+        },
+        {
+          "name": "Dance_In",
+          "duration": 4.333
+        },
+        {
+          "name": "SG_Classroom_Intro",
+          "duration": 1.4
+        },
+        {
+          "name": "PetChibiYunara_SpiritBlossom_Taunt02.CHIBI_Yunara_SpiritBlossom.anm",
+          "duration": 1.567
+        },
+        {
+          "name": "PetChibiYunara_SpiritBlossom_Taunt03.CHIBI_Yunara_SpiritBlossom.anm",
+          "duration": 1.5
+        },
+        {
+          "name": "PetChibiYunara_SpiritBlossom_Taunt04.CHIBI_Yunara_SpiritBlossom.anm",
+          "duration": 1.533
+        },
+        {
+          "name": "Joke_In",
+          "duration": 1.2
+        },
+        {
+          "name": "Laugh_Loop",
+          "duration": 2.333
+        },
+        {
+          "name": "Dance_Loop",
+          "duration": 1.667
+        },
+        {
+          "name": "Run",
+          "duration": 0.667
+        },
+        {
+          "name": "PetChibiYunara_SpiritBlossom_Taunt05.CHIBI_Yunara_SpiritBlossom.anm",
+          "duration": 1.567
+        },
+        {
+          "name": "PetChibiYunara_SpiritBlossom_Taunt06.CHIBI_Yunara_SpiritBlossom.anm",
+          "duration": 1.567
+        },
+        {
+          "name": "Idle02",
+          "duration": 5.5
+        },
+        {
+          "name": "PetChibiYunara_Base_Joke_in.CHIBI_Yunara_Base.anm",
+          "duration": 1.2
+        },
+        {
+          "name": "PetChibiYunara_Base_Joke_loop.CHIBI_Yunara_Base.anm",
+          "duration": 3.2
+        },
+        {
+          "name": "Finisher01",
+          "duration": 1.133
+        },
+        {
+          "name": "Finisher02",
+          "duration": 1.033
+        },
+        {
+          "name": "Finisher03",
+          "duration": 0.933
+        },
+        {
+          "name": "Finisher04",
+          "duration": 0.4
+        },
+        {
+          "name": "PetChibiYunara_SpiritBlossom_Finisher05.CHIBI_Yunara_SpiritBlossom.anm",
+          "duration": 0.7
+        },
+        {
+          "name": "PetChibiYunara_SpiritBlossom_Finisher06.CHIBI_Yunara_SpiritBlossom.anm",
+          "duration": 2.567
+        }
+      ]
+    },
+    {
+      "id": "chibi_star_guardian_lulu",
+      "baseId": "lulu",
+      "displayName": "Star Guardian Lulu",
+      "filename": "chibi_star_guardian_lulu.glb",
+      "bytes": 6006824,
+      "hasHeadBone": true,
+      "headBoneName": "Neck",
+      "animations": [
+        {
+          "name": "Idle_Base",
+          "duration": 1.167
+        },
+        {
+          "name": "Taunt",
+          "duration": 6
+        },
+        {
+          "name": "Idle_In",
+          "duration": 0.9
+        },
+        {
+          "name": "PetChibiLulu_StarGuardian_Joke.CHIBI_Lulu_StarGuardian.anm",
+          "duration": 4.5
+        },
+        {
+          "name": "Run_Haste",
+          "duration": 0.8
+        },
+        {
+          "name": "Dance_Loop",
+          "duration": 1.8
+        },
+        {
+          "name": "Dance_In",
+          "duration": 0.467
+        },
+        {
+          "name": "Run_Base",
+          "duration": 0.6
+        },
+        {
+          "name": "Cast_Animation",
+          "duration": 1.133
+        },
+        {
+          "name": "Cast_Cycle",
+          "duration": 0.867
+        },
+        {
+          "name": "Damage_Hurt",
+          "duration": 1.867
+        },
+        {
+          "name": "Death",
+          "duration": 2.333
+        },
+        {
+          "name": "Dive_In",
+          "duration": 1.1
+        },
+        {
+          "name": "Dive_Out",
+          "duration": 2.3
+        },
+        {
+          "name": "Cast_Damage",
+          "duration": 1.133
+        },
+        {
+          "name": "PetChibiLulu_StarGuardian_Idle.CHIBI_Lulu_StarGuardian.anm",
+          "duration": 1.167
+        },
+        {
+          "name": "Laugh",
+          "duration": 4.833
+        },
+        {
+          "name": "Finisher01",
+          "duration": 3.3
+        },
+        {
+          "name": "Finisher02",
+          "duration": 1.667
+        },
+        {
+          "name": "Finisher03",
+          "duration": 1.967
+        }
+      ]
+    },
+    {
+      "id": "chibi_star_guardian_lux",
+      "baseId": "lux",
+      "displayName": "Star Guardian Lux",
+      "filename": "chibi_star_guardian_lux.glb",
+      "bytes": 5923232,
+      "hasHeadBone": true,
+      "headBoneName": "Neck",
+      "animations": [
+        {
+          "name": "Idle_Base",
+          "duration": 2
+        },
+        {
+          "name": "Idle_In",
+          "duration": 1.067
+        },
+        {
+          "name": "Joke",
+          "duration": 4.667
+        },
+        {
+          "name": "Interact",
+          "duration": 2
+        },
+        {
+          "name": "Recall",
+          "duration": 4.667
+        },
+        {
+          "name": "Recall_Winddown",
+          "duration": 4.667
+        },
+        {
+          "name": "Run_Haste",
+          "duration": 0.733
+        },
+        {
+          "name": "Dance_Loop",
+          "duration": 1.667
+        },
+        {
+          "name": "Dance_In",
+          "duration": 3.667
+        },
+        {
+          "name": "Run_Base",
+          "duration": 0.733
+        },
+        {
+          "name": "Cast_Animation",
+          "duration": 1.4
+        },
+        {
+          "name": "Cast_Cycle",
+          "duration": 0.867
+        },
+        {
+          "name": "Damage_Hurt",
+          "duration": 1
+        },
+        {
+          "name": "Death",
+          "duration": 1.533
+        },
+        {
+          "name": "Greeting",
+          "duration": 2.5
+        },
+        {
+          "name": "Dive_In",
+          "duration": 1.267
+        },
+        {
+          "name": "Dive_Out",
+          "duration": 1.767
+        },
+        {
+          "name": "Cast_Damage",
+          "duration": 1.4
+        },
+        {
+          "name": "PetChibiLux_StarGuardian_Laugh.anm",
+          "duration": 2.5
+        },
+        {
+          "name": "PetChibiLux_StarGuardian_Idle.anm",
+          "duration": 2
+        },
+        {
+          "name": "Laugh01",
+          "duration": 2.5
+        },
+        {
+          "name": "Taunt_Intro",
+          "duration": 0.5
+        },
+        {
+          "name": "Taunt_loop",
+          "duration": 1.333
+        },
+        {
+          "name": "Laugh02",
+          "duration": 2.5
+        },
+        {
+          "name": "SG_Classroom_Intro",
+          "duration": 1.667
+        },
+        {
+          "name": "Finisher01",
+          "duration": 0.933
+        },
+        {
+          "name": "Finisher02",
+          "duration": 5.333
+        },
+        {
+          "name": "Finisher03",
+          "duration": 0.633
+        },
+        {
+          "name": "PetChibiLux_StarGuardian_Dance_loop.anm",
+          "duration": 1.667
+        }
+      ]
+    },
+    {
+      "id": "chibi_yunara",
+      "baseId": "yunara",
+      "displayName": "Yunara",
+      "filename": "chibi_yunara.glb",
+      "bytes": 5663892,
+      "hasHeadBone": true,
+      "headBoneName": "Neck",
+      "animations": [
+        {
+          "name": "Idle_Base",
+          "duration": 2.667
+        },
+        {
+          "name": "PetChibiYunara_Base_Taunt01.CHIBI_Yunara_Base.anm",
+          "duration": 1.567
+        },
+        {
+          "name": "PetChibiYunara_Base_Joke_loop.CHIBI_Yunara_Base.anm",
+          "duration": 3.2
+        },
+        {
+          "name": "Interact",
+          "duration": 2.667
+        },
+        {
+          "name": "Recall",
+          "duration": 2.667
+        },
+        {
+          "name": "Recall_Winddown",
+          "duration": 2.667
+        },
+        {
+          "name": "Run_Haste",
+          "duration": 0.667
+        },
+        {
+          "name": "Run_Base",
+          "duration": 0.667
+        },
+        {
+          "name": "Cast_Animation",
+          "duration": 1.567
+        },
+        {
+          "name": "Cast_Cycle",
+          "duration": 1.333
+        },
+        {
+          "name": "Damage_Hurt",
+          "duration": 1.667
+        },
+        {
+          "name": "Death",
+          "duration": 1.667
+        },
+        {
+          "name": "Dive_In",
+          "duration": 1.4
+        },
+        {
+          "name": "Dive_Out",
+          "duration": 2.833
+        },
+        {
+          "name": "Cast_Damage",
+          "duration": 1.567
+        },
+        {
+          "name": "PetChibiYunara_Base_Idle.CHIBI_Yunara_Base.anm",
+          "duration": 2.667
+        },
+        {
+          "name": "Laugh_In",
+          "duration": 3
+        },
+        {
+          "name": "Idle_To_Run",
+          "duration": 2.667
+        },
+        {
+          "name": "Idle_In",
+          "duration": 1.167
+        },
+        {
+          "name": "Dance_In",
+          "duration": 4.333
+        },
+        {
+          "name": "SG_Classroom_Intro",
+          "duration": 1.4
+        },
+        {
+          "name": "PetChibiYunara_Base_Taunt02.CHIBI_Yunara_Base.anm",
+          "duration": 1.567
+        },
+        {
+          "name": "PetChibiYunara_Base_Taunt03.CHIBI_Yunara_Base.anm",
+          "duration": 1.5
+        },
+        {
+          "name": "PetChibiYunara_Base_Taunt04.CHIBI_Yunara_Base.anm",
+          "duration": 1.533
+        },
+        {
+          "name": "Joke_In",
+          "duration": 1.2
+        },
+        {
+          "name": "Laugh_Loop",
+          "duration": 2.333
+        },
+        {
+          "name": "Dance_Loop",
+          "duration": 1.667
+        },
+        {
+          "name": "Run",
+          "duration": 0.667
+        },
+        {
+          "name": "PetChibiYunara_Base_Taunt05.CHIBI_Yunara_Base.anm",
+          "duration": 1.567
+        },
+        {
+          "name": "PetChibiYunara_Base_Taunt06.CHIBI_Yunara_Base.anm",
+          "duration": 1.567
+        },
+        {
+          "name": "Idle02",
+          "duration": 5.5
+        },
+        {
+          "name": "PetChibiYunara_Base_Joke_in.CHIBI_Yunara_Base.anm",
+          "duration": 1.2
+        }
+      ]
+    },
+    {
+      "id": "chibi_zoe",
+      "baseId": "zoe",
+      "displayName": "Zoe",
+      "filename": "chibi_zoe.glb",
+      "bytes": 5074144,
+      "hasHeadBone": true,
+      "headBoneName": "Neck",
+      "animations": [
+        {
+          "name": "Idle_Base",
+          "duration": 3.267
+        },
+        {
+          "name": "Taunt",
+          "duration": 4.4
+        },
+        {
+          "name": "Joke_In",
+          "duration": 3.367
+        },
+        {
+          "name": "PetChibiZoe_Base_Run_01.CHIBI_Zoe_Base.anm",
+          "duration": 1.733
+        },
+        {
+          "name": "Cast_Animation",
+          "duration": 1.067
+        },
+        {
+          "name": "Damage_Hurt",
+          "duration": 1.667
+        },
+        {
+          "name": "Death",
+          "duration": 1.633
+        },
+        {
+          "name": "Dive_In",
+          "duration": 1.167
+        },
+        {
+          "name": "Dive_Out",
+          "duration": 2
+        },
+        {
+          "name": "Cast_Damage",
+          "duration": 1.067
+        },
+        {
+          "name": "Laugh",
+          "duration": 6.067
+        },
+        {
+          "name": "Idle_In",
+          "duration": 1.067
+        },
+        {
+          "name": "PetChibiZoe_Base_dance_01.CHIBI_Zoe_Base.anm",
+          "duration": 0.933
+        },
+        {
+          "name": "SG_Classroom_Intro",
+          "duration": 1.167
+        },
+        {
+          "name": "Run_02",
+          "duration": 2.033
+        },
+        {
+          "name": "Cast_In",
+          "duration": 2.133
+        },
+        {
+          "name": "PetChibiZoe_Base_Cast_Loop.CHIBI_Zoe_Base.anm",
+          "duration": 1.2
+        },
+        {
+          "name": "PetChibiZoe_Base_dance_in.CHIBI_Zoe_Base.anm",
+          "duration": 0.6
+        },
+        {
+          "name": "PetChibiZoe_Base_dance_03.CHIBI_Zoe_Base.anm",
+          "duration": 1.467
+        },
+        {
+          "name": "Joke_Loop",
+          "duration": 1.1
+        },
+        {
+          "name": "PetChibiZoe_Base_Joke_in.CHIBI_Zoe_Base.anm",
+          "duration": 3.367
+        },
+        {
+          "name": "PetChibiZoe_Base_Joke_Cycle.CHIBI_Zoe_Base.anm",
+          "duration": 1.1
+        }
+      ]
+    },
+    {
+      "id": "prestige_chibi_cafe_cuties_gwen",
+      "baseId": "gwen",
+      "displayName": "Prestige Cafe Cuties Gwen",
+      "filename": "prestige_chibi_cafe_cuties_gwen.glb",
+      "bytes": 8077492,
+      "hasHeadBone": true,
+      "headBoneName": "Neck",
+      "animations": [
+        {
+          "name": "Idle_Base",
+          "duration": 1.6
+        },
+        {
+          "name": "PetChibiGwen_CafeCuties_tuant.CHIBI_Gwen_CafeCuties.anm",
+          "duration": 2.433
+        },
+        {
+          "name": "Idle_In",
+          "duration": 0.967
+        },
+        {
+          "name": "PetChibiGwen_CafeCuties_joke.CHIBI_Gwen_CafeCuties.anm",
+          "duration": 1.833
+        },
+        {
+          "name": "Run_Haste",
+          "duration": 0.733
+        },
+        {
+          "name": "Dance_Loop",
+          "duration": 3.767
+        },
+        {
+          "name": "Dance_In",
+          "duration": 2.233
+        },
+        {
+          "name": "Cast_Cycle",
+          "duration": 0.8
+        },
+        {
+          "name": "Damage_Hurt",
+          "duration": 1.767
+        },
+        {
+          "name": "Death",
+          "duration": 3.633
+        },
+        {
+          "name": "Dive_In",
+          "duration": 1.3
+        },
+        {
+          "name": "Dive_Out",
+          "duration": 2.533
+        },
+        {
+          "name": "Cast_Damage",
+          "duration": 1.3
+        },
+        {
+          "name": "Run",
+          "duration": 0.733
+        },
+        {
+          "name": "Run01",
+          "duration": 1.5
+        },
+        {
+          "name": "PetChibiGwen_CafeCuties_Doll_IdleIn.CHIBI_Gwen_CafeCuties.anm",
+          "duration": 0.967
+        },
+        {
+          "name": "Laugh01",
+          "duration": 4.067
+        },
+        {
+          "name": "Laugh02",
+          "duration": 0.6
+        },
+        {
+          "name": "Cast_Animation",
+          "duration": 1.3
+        },
+        {
+          "name": "Celebrate",
+          "duration": 3.767
+        },
+        {
+          "name": "Interact",
+          "duration": 1.833
+        },
+        {
+          "name": "Recall",
+          "duration": 1.833
+        },
+        {
+          "name": "Recall_Winddown",
+          "duration": 1.833
+        },
+        {
+          "name": "Vfx01",
+          "duration": 1.3
+        },
+        {
+          "name": "Vfx02",
+          "duration": 1.3
+        },
+        {
+          "name": "PetChibiGwen_CafeCuties_Cast_Damage.CHIBI_Gwen_CafeCuties.anm",
+          "duration": 1.3
+        },
+        {
+          "name": "PetChibiGwen_CafeCuties_Finishe_C001.CHIBI_Gwen_CafeCuties.anm",
+          "duration": 4.867
+        },
+        {
+          "name": "PetChibiGwen_CafeCuties_Finishe_C002.CHIBI_Gwen_CafeCuties.anm",
+          "duration": 2.667
+        }
+      ]
+    },
+    {
+      "id": "prestige_chibi_star_nemesis_morgana",
+      "baseId": "morgana",
+      "displayName": "Prestige Star Nemesis Morgana",
+      "filename": "prestige_chibi_star_nemesis_morgana.glb",
+      "bytes": 6099148,
+      "hasHeadBone": true,
+      "headBoneName": "Neck",
+      "animations": [
+        {
+          "name": "Idle_Base",
+          "duration": 2.667
+        },
+        {
+          "name": "Taunt_In",
+          "duration": 0.833
+        },
+        {
+          "name": "PetChibiMorgana_PrestigeStarNemesis_Dancein.CHIBI_Morgana_PrestigeStarNemesis",
+          "duration": 0.3
+        },
+        {
+          "name": "Idle_In",
+          "duration": 1.033
+        },
+        {
+          "name": "Joke",
+          "duration": 3.8
+        },
+        {
+          "name": "Recall",
+          "duration": 4.333
+        },
+        {
+          "name": "Recall_Winddown",
+          "duration": 4.333
+        },
+        {
+          "name": "Run_Haste",
+          "duration": 1
+        },
+        {
+          "name": "Dance_Loop",
+          "duration": 4.333
+        },
+        {
+          "name": "Dance_In",
+          "duration": 0.3
+        },
+        {
+          "name": "Run_Base",
+          "duration": 0.867
+        },
+        {
+          "name": "Cast_Animation",
+          "duration": 1.833
+        },
+        {
+          "name": "Cast_Cycle",
+          "duration": 1
+        },
+        {
+          "name": "Damage_Hurt",
+          "duration": 1.333
+        },
+        {
+          "name": "Death",
+          "duration": 2
+        },
+        {
+          "name": "Dive_In",
+          "duration": 1.333
+        },
+        {
+          "name": "Dive_Out",
+          "duration": 2
+        },
+        {
+          "name": "Cast_Damage",
+          "duration": 1.833
+        },
+        {
+          "name": "PetChibiMorgana_PrestigeStarNemesis_DanceLoop.CHIBI_Morgana_PrestigeStarNemesis",
+          "duration": 4.333
+        },
+        {
+          "name": "Laugh",
+          "duration": 7.733
+        },
+        {
+          "name": "Cast_To_Idle",
+          "duration": 1.833
+        },
+        {
+          "name": "Taunt_loop",
+          "duration": 2
+        },
+        {
+          "name": "PetChibiMorgana_PrestigeStarNemesis_DanceLoop.CHIBI_Morgana_PrestigeStarNemesis_2",
+          "duration": 4.333
+        },
+        {
+          "name": "PetChibiMorgana_PrestigeStarNemesis_Taunt_in.CHIBI_Morgana_PrestigeStarNemesis",
+          "duration": 0.833
+        },
+        {
+          "name": "PetChibiMorgana_PrestigeStarNemesis_Taunt_loop.CHIBI_Morgana_PrestigeStarNemesis",
+          "duration": 2
+        },
+        {
+          "name": "Interact",
+          "duration": 2.667
+        },
+        {
+          "name": "Finisher01",
+          "duration": 0.633
+        },
+        {
+          "name": "Finisher02",
+          "duration": 0.733
+        },
+        {
+          "name": "Finisher03",
+          "duration": 0.5
+        },
+        {
+          "name": "Finisher04",
+          "duration": 2.267
+        },
+        {
+          "name": "PetChibiMorgana_PrestigeStarNemesis_Finisher05.CHIBI_Morgana_PrestigeStarNemesis",
+          "duration": 0.833
+        },
+        {
+          "name": "PetChibiMorgana_PrestigeStarNemesis_Finisher06.CHIBI_Morgana_PrestigeStarNemesis",
+          "duration": 1.1
+        },
+        {
+          "name": "PetChibiMorgana_PrestigeStarNemesis_Finisher07.CHIBI_Morgana_PrestigeStarNemesis",
+          "duration": 0.733
+        }
+      ]
+    },
+    {
+      "id": "victorious_duckbill",
+      "baseId": "duckbill",
+      "displayName": "Victorious Duckbill",
+      "filename": "victorious_duckbill.glb",
+      "bytes": 3721560,
+      "hasHeadBone": true,
+      "headBoneName": "Neck",
+      "animations": [
+        {
+          "name": "Idle_Base",
+          "duration": 2
+        },
+        {
+          "name": "Taunt",
+          "duration": 1.5
+        },
+        {
+          "name": "Celebrate",
+          "duration": 2
+        },
+        {
+          "name": "Idle_In",
+          "duration": 0.667
+        },
+        {
+          "name": "Interact",
+          "duration": 2.333
+        },
+        {
+          "name": "Recall",
+          "duration": 5.133
+        },
+        {
+          "name": "Recall_Winddown",
+          "duration": 2
+        },
+        {
+          "name": "Run_Haste",
+          "duration": 0.667
+        },
+        {
+          "name": "Dance_Loop",
+          "duration": 6
+        },
+        {
+          "name": "Dance_In",
+          "duration": 0.733
+        },
+        {
+          "name": "Run_Base",
+          "duration": 0.667
+        },
+        {
+          "name": "Cast_Animation",
+          "duration": 1.667
+        },
+        {
+          "name": "Cast_Cycle",
+          "duration": 0.667
+        },
+        {
+          "name": "Damage_Hurt",
+          "duration": 1
+        },
+        {
+          "name": "Death",
+          "duration": 2.333
+        },
+        {
+          "name": "Greeting",
+          "duration": 2.4
+        },
+        {
+          "name": "Dive_In",
+          "duration": 1.5
+        },
+        {
+          "name": "Dive_Out",
+          "duration": 2.667
+        },
+        {
+          "name": "Cast_Damage",
+          "duration": 1
+        },
+        {
+          "name": "PetDuckbill_Idle_base.anm",
+          "duration": 2
+        },
+        {
+          "name": "Run_To_Fly",
+          "duration": 1.3
+        },
+        {
+          "name": "Idle_Varient",
+          "duration": 2.333
+        },
+        {
+          "name": "Idle_Varient2",
+          "duration": 3.333
+        },
+        {
+          "name": "Laugh_In",
+          "duration": 6.2
+        },
+        {
+          "name": "Laugh_Loop",
+          "duration": 0.5
+        },
+        {
+          "name": "Joke_In",
+          "duration": 5.133
+        },
+        {
+          "name": "Joke_Loop",
+          "duration": 1.667
+        }
+      ]
+    }
+  ]
+}
