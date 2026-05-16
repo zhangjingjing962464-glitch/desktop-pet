@@ -9,6 +9,8 @@ name: Release
 on:
   push:
     tags: ['v*']
+  # 允许从 GitHub Actions 页面手动触发，方便测试 CI 链路不走 tag
+  workflow_dispatch:
 
 permissions:
   contents: write
