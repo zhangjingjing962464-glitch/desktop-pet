@@ -44,7 +44,7 @@
   },
   "build": {
     "appId": "com.chinjing.desktop-pet",
-    "productName": "桌面小小英雄",
+    "productName": "desktop-pet",
     "directories": {
       "output": "release"
     },
