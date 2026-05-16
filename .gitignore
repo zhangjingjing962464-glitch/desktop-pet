@@ -12,7 +12,7 @@ coverage/
 *.tsbuildinfo
 
 # 第三方模型/图片源文件（版权相关，不发布）
-assets/models/
+assets/models
 assets/icons/app-source.png
 assets/icons/app-cleaned.png
 assets/icons/AppIcon.iconset/

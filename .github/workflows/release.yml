@@ -1,0 +1,89 @@
+name: Release
+
+# 触发：push 形如 v0.1.0 / v1.2.3 的 tag。Mac dmg 由开发者本地手工 build
+# 并通过 gh release upload 上传（dmg 含 GLB 模型，文件大且涉及第三方版权）；
+# 本 workflow 只负责 Win / Linux 版本，CI runner 拿不到 GLB，build 出来的
+# .exe / .AppImage 是"无模型壳子"——用户安装后需要自备 .glb 到指定目录
+# （应用第一次启动会提示路径）。
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Prepare empty assets/models
+        # build-manifest.mjs 要求该目录存在，空目录会输出空 manifest 让 build 继续
+        run: New-Item -ItemType Directory -Force -Path "assets/models" | Out-Null
+        shell: pwsh
+
+      - run: npm run scripts:manifest
+
+      - name: Build Windows NSIS installer
+        run: npm run dist:win
+        env:
+          # electron-builder 用此 token 走 publish=onTagOrDraft 时上传；
+          # 这里我们用 softprops 上传，所以 token 主要给后续步骤
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: List build artifacts
+        run: Get-ChildItem release | Format-Table -AutoSize
+        shell: pwsh
+
+      - name: Upload .exe to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            release/*.exe
+            release/*.exe.blockmap
+          fail_on_unmatched_files: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Prepare empty assets/models
+        run: mkdir -p assets/models
+
+      - run: npm run scripts:manifest
+
+      - name: Build Linux AppImage
+        run: npm run dist:linux
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: List build artifacts
+        run: ls -la release/
+
+      - name: Upload .AppImage to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            release/*.AppImage
+          fail_on_unmatched_files: false
+          token: ${{ secrets.GITHUB_TOKEN }}
