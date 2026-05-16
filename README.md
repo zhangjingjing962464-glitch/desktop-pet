@@ -12,17 +12,15 @@
 
 到 [Releases](https://github.com/zhangjingjing962464-glitch/desktop-pet/releases) 页选择对应平台：
 
-| 平台 | 文件 | 是否含模型 |
-|---|---|---|
-| **macOS Apple Silicon** | `desktop-pet-X.X.X-arm64.dmg` | ✅ 含（开箱即用）|
-| **Windows 10/11** | `desktop-pet-Setup-X.X.X.exe` | ❌ 用户需自备 |
-| **Linux** | `desktop-pet-X.X.X.AppImage` | ❌ 用户需自备 |
+| 平台 | 文件 |
+|---|---|
+| **macOS Apple Silicon** | `desktop-pet-X.X.X-arm64.dmg` |
+| **Windows 10/11** | `desktop-pet-Setup-X.X.X.exe` |
+| **Linux** | `desktop-pet-X.X.X.AppImage` |
 
 **macOS**：双击 dmg，把 `desktop-pet.app` 拖到「应用程序」。第一次启动若被 Gatekeeper 拦下，到「系统设置 → 隐私与安全性」点"仍要打开"。
 
-**Windows / Linux**：由于本仓库不含 LoL 模型文件（版权原因），CI 自动构建的 `.exe` 和 `.AppImage` **不包含** `.glb`。安装后第一次启动会显示"角色列表为空"，需要把 `.glb` 模型文件手动放到：
-- Windows：`%APPDATA%\desktop-pet\models\`
-- Linux：`~/.config/desktop-pet/models/`
+**Windows / Linux**：双击安装包即可。CI 通过私有 `MODELS_TOKEN` 拉取模型仓库后打包，安装包含全部 .glb 模型。
 
 > ❌ **不支持 Windows 7**——本项目用 Electron 32，Electron 23+ 已放弃 Win7 支持。需要 Win10+。
 

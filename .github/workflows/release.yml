@@ -1,10 +1,10 @@
 name: Release
 
-# 触发：push 形如 v0.1.0 / v1.2.3 的 tag。Mac dmg 由开发者本地手工 build
-# 并通过 gh release upload 上传（dmg 含 GLB 模型，文件大且涉及第三方版权）；
-# 本 workflow 只负责 Win / Linux 版本，CI runner 拿不到 GLB，build 出来的
-# .exe / .AppImage 是"无模型壳子"——用户安装后需要自备 .glb 到指定目录
-# （应用第一次启动会提示路径）。
+# 触发：push 形如 v0.1.0 / v1.2.3 的 tag。
+# Mac dmg 仍由开发者本地 build（含模型，文件大、版权敏感），通过 gh release 上传；
+# 本 workflow 负责 Windows / Linux。
+# CI runner 通过 secrets.MODELS_TOKEN 拉私有 repo desktop-pet-models 的 .glb，
+# 再打包进 exe / AppImage —— 用户开箱即用，仓库本身不暴露模型。
 
 on:
   push:
@@ -27,23 +27,29 @@ jobs:
 
       - run: npm ci
 
-      - name: Prepare empty assets/models
-        # build-manifest.mjs 要求该目录存在，空目录会输出空 manifest 让 build 继续
-        run: New-Item -ItemType Directory -Force -Path "assets/models" | Out-Null
-        shell: pwsh
+      - name: Fetch models from private repo
+        shell: bash
+        env:
+          MODELS_TOKEN: ${{ secrets.MODELS_TOKEN }}
+        run: |
+          git clone --depth 1 \
+            "https://x-access-token:${MODELS_TOKEN}@github.com/zhangjingjing962464-glitch/desktop-pet-models.git" \
+            _models
+          mkdir -p assets/models
+          cp _models/*.glb assets/models/
+          rm -rf _models
+          ls assets/models | wc -l
 
       - run: npm run scripts:manifest
 
       - name: Build Windows NSIS installer
         run: npm run dist:win
         env:
-          # electron-builder 用此 token 走 publish=onTagOrDraft 时上传；
-          # 这里我们用 softprops 上传，所以 token 主要给后续步骤
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: List build artifacts
-        run: Get-ChildItem release | Format-Table -AutoSize
         shell: pwsh
+        run: Get-ChildItem release | Format-Table -AutoSize
 
       - name: Upload .exe to GitHub Release
         uses: softprops/action-gh-release@v2
@@ -67,8 +73,17 @@ jobs:
 
       - run: npm ci
 
-      - name: Prepare empty assets/models
-        run: mkdir -p assets/models
+      - name: Fetch models from private repo
+        env:
+          MODELS_TOKEN: ${{ secrets.MODELS_TOKEN }}
+        run: |
+          git clone --depth 1 \
+            "https://x-access-token:${MODELS_TOKEN}@github.com/zhangjingjing962464-glitch/desktop-pet-models.git" \
+            _models
+          mkdir -p assets/models
+          cp _models/*.glb assets/models/
+          rm -rf _models
+          ls assets/models | wc -l
 
       - run: npm run scripts:manifest
 
