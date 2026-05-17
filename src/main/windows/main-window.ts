@@ -12,7 +12,6 @@ const log = createLogger('main-window');
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 interface CreateOptions {
-  sizeCm?: number;
   position?: { x: number; y: number };
   /** 默认 false（最底层）；true 表示最顶层 */
   windowOnTop?: boolean;
@@ -39,7 +38,7 @@ function resolveIndexHtml(): { url?: string; file?: string } {
 }
 
 export function createMainWindow(opts: CreateOptions = {}): BrowserWindow {
-  const sizeCm = opts.sizeCm ?? DEFAULT_SIZE_CM;
+  const sizeCm = DEFAULT_SIZE_CM;
   const display = screen.getPrimaryDisplay();
   const ppi = display.scaleFactor >= 2 ? 220 : 96;
   const modelPx = cmToPx(sizeCm, ppi);
@@ -81,6 +80,9 @@ export function createMainWindow(opts: CreateOptions = {}): BrowserWindow {
     backgroundColor: '#00000000',
     title: '桌面小小英雄',
     show: false,
+    // macOS 使用 NSPanel：可越过菜单栏，不抢应用焦点，与桌宠定位一致；
+    // 同时让上边框与左/右/下边框一致地允许隐藏到屏幕外（默认普通窗口会被系统 y-clamp 在菜单栏下方）
+    ...(process.platform === 'darwin' ? { type: 'panel' as const } : {}),
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: false,

@@ -18,11 +18,16 @@ export class SettingsStore {
     this.validate();
   }
 
-  /** 启动时校验存储里的数据；若 schema 不匹配则合并默认值后写回 */
+  /** 启动时校验+规范化存储里的数据：通过 schema 的 .default() 补全新增字段后写回 */
   private validate(): void {
     const raw = this.store.get('settings');
     const parsed = SettingsSchema.safeParse(raw);
-    if (parsed.success) return;
+    if (parsed.success) {
+      // 即使解析成功也写回——schema 新增字段时 default 值不会自动持久化，
+      // 不写回会导致 get() 返回的 raw 对象缺新字段，下游访问 undefined 报错
+      this.store.set('settings', parsed.data);
+      return;
+    }
     log.warn('存储中的设置不符合 schema，合并默认值后写回', parsed.error.format());
     const merged = SettingsSchema.parse({ ...DEFAULT_SETTINGS, ...(raw ?? {}) });
     this.store.set('settings', merged);

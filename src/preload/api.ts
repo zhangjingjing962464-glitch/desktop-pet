@@ -7,9 +7,9 @@ import type {
   SetWindowSizePayload,
   SetWindowPositionPayload,
   SetIgnoreMousePayload,
-  NotifyPayload,
   ContextMenuPayload,
   ContextMenuResult,
+  CursorUpdatePayload,
   DisplayMetrics,
 } from '@shared/ipc/contracts.js';
 import type { UserSettings } from '@shared/domain/settings.js';
@@ -37,26 +37,12 @@ export const api: PreloadApi = {
     setIgnoreMouse: (p: SetIgnoreMousePayload) =>
       ipcRenderer.invoke(IPC.window.setIgnoreMouse, p) as Promise<void>,
     setAlwaysOnTop: (on) => ipcRenderer.invoke(IPC.window.setAlwaysOnTop, on) as Promise<void>,
-    openSettings: () => ipcRenderer.invoke(IPC.window.openSettings) as Promise<void>,
     focus: () => ipcRenderer.invoke(IPC.window.focus) as Promise<void>,
   },
   menu: {
     popupContext: (p: ContextMenuPayload) =>
       ipcRenderer.invoke(IPC.menu.popupContext, p) as Promise<void>,
     onResult: (cb) => listenChannel<ContextMenuResult>(IPC.menu.onResult, cb),
-  },
-  notify: {
-    show: (p: NotifyPayload) => ipcRenderer.invoke(IPC.notify.show, p) as Promise<void>,
-  },
-  reminder: {
-    state: () =>
-      ipcRenderer.invoke(IPC.reminder.state) as Promise<{ state: string; remainingMs: number }>,
-    skipRest: () => ipcRenderer.invoke(IPC.reminder.skipRest) as Promise<void>,
-    pauseAll: (paused) => ipcRenderer.invoke(IPC.reminder.pauseAll, paused) as Promise<void>,
-    onEnterResting: (cb) => listenChannel<void>(IPC.reminder.onEnterResting, () => cb()),
-    onExitResting: (cb) => listenChannel<void>(IPC.reminder.onExitResting, () => cb()),
-    onMealTrigger: (cb) =>
-      listenChannel<'breakfast' | 'lunch' | 'dinner'>(IPC.reminder.onMealTrigger, cb),
   },
   characters: {
     list: () =>
@@ -67,10 +53,7 @@ export const api: PreloadApi = {
     onSuspend: (cb) => listenChannel<void>(IPC.power.onSuspend, () => cb()),
     onResume: (cb) => listenChannel<void>(IPC.power.onResume, () => cb()),
   },
-  dialog: {
-    pickAudio: () => ipcRenderer.invoke(IPC.dialog.pickAudio) as Promise<string | null>,
-  },
-  audio: {
-    preview: (sound) => ipcRenderer.invoke(IPC.audio.preview, sound) as Promise<void>,
+  cursor: {
+    onUpdate: (cb) => listenChannel<CursorUpdatePayload>(IPC.cursor.update, cb),
   },
 };

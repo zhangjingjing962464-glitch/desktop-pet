@@ -1,10 +1,12 @@
-// 右键菜单：角色切换 / 设置 / 暂停提醒 / 退出
+// 应用菜单 builder：托盘菜单 + 右键菜单复用同一套 template
+// 内容：切换角色（baseId 二级）/ 主题（浅/深/跟随系统）/ 窗口置顶 / 退出
 
 import { Menu, BrowserWindow, app } from 'electron';
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { CharactersManifest } from '@shared/domain/character.js';
+import type { UserSettings } from '@shared/domain/settings.js';
 import { IPC } from '@shared/ipc/channels.js';
 import { createLogger } from '@shared/utils/logger.js';
 
@@ -30,32 +32,31 @@ function loadManifest(): CharactersManifest {
   return cachedManifest;
 }
 
-interface MenuDeps {
+export interface AppMenuDeps {
   getCurrentCharacter(): string;
-  isRemindersPaused(): boolean;
+  getTheme(): UserSettings['theme'];
   isWindowOnTop(): boolean;
   onSwitchCharacter(id: string): void;
-  onOpenSettings(): void;
-  onTogglePause(): void;
+  onSetTheme(theme: UserSettings['theme']): void;
   onToggleWindowOnTop(): void;
-  onQuit(): void;
 }
 
-/** 弹出右键菜单。x/y 是 renderer 内 client 坐标，需要传给 popup 时 Electron 会按窗口内坐标处理 */
-export function popupContextMenu(win: BrowserWindow, deps: MenuDeps): void {
+/** 构建应用主菜单 template（切换角色 / 主题 / 窗口置顶 / 退出）
+ *  托盘和右键菜单共用此 template */
+export function buildAppMenuTemplate(deps: AppMenuDeps): Electron.MenuItemConstructorOptions[] {
   const manifest = loadManifest();
   const currentId = deps.getCurrentCharacter();
+  const currentTheme = deps.getTheme();
 
-  // 按 baseId 分组形成二级菜单
+  // 角色按 baseId 分组形成二级菜单
   const groups = new Map<string, typeof manifest.characters[number][]>();
   for (const c of manifest.characters) {
     const arr = groups.get(c.baseId) ?? [];
     arr.push(c);
     groups.set(c.baseId, arr);
   }
-
-  const characterSubmenu: Electron.MenuItemConstructorOptions[] = [];
   const sortedGroups = Array.from(groups.entries()).sort(([a], [b]) => a.localeCompare(b));
+  const characterSubmenu: Electron.MenuItemConstructorOptions[] = [];
   for (const [baseId, chars] of sortedGroups) {
     if (chars.length === 1) {
       const c = chars[0];
@@ -79,10 +80,33 @@ export function popupContextMenu(win: BrowserWindow, deps: MenuDeps): void {
     }
   }
 
-  const template: Electron.MenuItemConstructorOptions[] = [
+  return [
     {
       label: '切换角色',
       submenu: characterSubmenu.length > 0 ? characterSubmenu : [{ label: '（无可用角色）', enabled: false }],
+    },
+    {
+      label: '主题',
+      submenu: [
+        {
+          label: '浅色',
+          type: 'radio',
+          checked: currentTheme === 'light',
+          click: () => deps.onSetTheme('light'),
+        },
+        {
+          label: '深色',
+          type: 'radio',
+          checked: currentTheme === 'dark',
+          click: () => deps.onSetTheme('dark'),
+        },
+        {
+          label: '跟随系统',
+          type: 'radio',
+          checked: currentTheme === 'system',
+          click: () => deps.onSetTheme('system'),
+        },
+      ],
     },
     { type: 'separator' },
     {
@@ -91,27 +115,18 @@ export function popupContextMenu(win: BrowserWindow, deps: MenuDeps): void {
       checked: deps.isWindowOnTop(),
       click: () => deps.onToggleWindowOnTop(),
     },
-    {
-      label: deps.isRemindersPaused() ? '恢复提醒' : '暂停提醒',
-      click: () => deps.onTogglePause(),
-    },
-    {
-      label: '设置...',
-      accelerator: 'CommandOrControl+,',
-      click: () => deps.onOpenSettings(),
-    },
     { type: 'separator' },
     {
       label: '退出',
       role: 'quit',
-      click: () => {
-        deps.onQuit();
-        app.quit();
-      },
+      click: () => app.quit(),
     },
   ];
+}
 
-  const menu = Menu.buildFromTemplate(template);
+/** 弹出右键菜单 */
+export function popupContextMenu(win: BrowserWindow, deps: AppMenuDeps): void {
+  const menu = Menu.buildFromTemplate(buildAppMenuTemplate(deps));
   menu.popup({ window: win });
 }
 
@@ -119,4 +134,3 @@ export function popupContextMenu(win: BrowserWindow, deps: MenuDeps): void {
 export function notifyMenuResult(win: BrowserWindow, payload: unknown): void {
   win.webContents.send(IPC.menu.onResult, payload);
 }
-

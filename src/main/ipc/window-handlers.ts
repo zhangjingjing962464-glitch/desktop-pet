@@ -7,23 +7,29 @@ import type {
   SetWindowPositionPayload,
   SetIgnoreMousePayload,
 } from '@shared/ipc/contracts.js';
-import { openSettingsWindow } from '../windows/settings-window.js';
+import { MODEL_FEET_VIEWPORT_RATIO } from '@shared/constants/physical.js';
 
 export function registerWindowHandlers(getMainWindow: () => BrowserWindow | null): void {
   ipcMain.handle(IPC.window.setSize, (_e, p: SetWindowSizePayload) => {
     const win = getMainWindow();
     if (!win) return;
-    const [cx, cy] = win.getBounds() ? [win.getBounds().x + win.getBounds().width / 2, win.getBounds().y + win.getBounds().height / 2] : [0, 0];
+    const b = win.getBounds();
     const anchor = p.anchor ?? 'center';
     if (anchor === 'center') {
+      // x: 中心对齐（模型水平居中，与窗口几何中心一致）
+      // y: 脚底位置对齐（模型脚底在画布 MODEL_FEET_VIEWPORT_RATIO 处，
+      //    与窗口几何中心不重合；如果按中心对齐会让脚底随窗口大小变化漂移）
+      // animate=true: macOS 原生窗口动画，把"瞬时跳变"分摊到多帧平滑过渡，
+      //    每帧 ResizeObserver 触发 fit() 同步 drawingBuffer，消除单帧跳闪
+      const feetY = b.y + b.height * MODEL_FEET_VIEWPORT_RATIO;
       win.setBounds({
-        x: Math.round(cx - p.widthPx / 2),
-        y: Math.round(cy - p.heightPx / 2),
+        x: Math.round(b.x + b.width / 2 - p.widthPx / 2),
+        y: Math.round(feetY - p.heightPx * MODEL_FEET_VIEWPORT_RATIO),
         width: p.widthPx,
         height: p.heightPx,
-      });
+      }, true);
     } else {
-      win.setSize(p.widthPx, p.heightPx);
+      win.setSize(p.widthPx, p.heightPx, true);
     }
   });
 
@@ -55,9 +61,5 @@ export function registerWindowHandlers(getMainWindow: () => BrowserWindow | null
     if (win.isMinimized()) win.restore();
     win.show();
     win.focus();
-  });
-
-  ipcMain.handle(IPC.window.openSettings, () => {
-    openSettingsWindow();
   });
 }

@@ -31,24 +31,20 @@ export interface SetIgnoreMousePayload {
   forward?: boolean;
 }
 
-export interface NotifyPayload {
-  title: string;
-  body: string;
-  tag?: string;
-  silent?: boolean;
-  /** macOS NSSound 系统音名或本地音频文件绝对路径 */
-  sound?: string;
-}
-
 export interface ContextMenuPayload {
   x: number;
   y: number;
 }
 
+export interface CursorUpdatePayload {
+  /** client x（相对窗口 contentBounds 左上） */
+  x: number;
+  /** client y */
+  y: number;
+}
+
 export type ContextMenuResult =
   | { type: 'switch-character'; characterId: string }
-  | { type: 'open-settings' }
-  | { type: 'toggle-pause-reminders' }
   | { type: 'quit' };
 
 /** 暴露给 renderer 的类型化 API（preload 中实现） */
@@ -66,31 +62,11 @@ export interface PreloadApi {
     setPosition(p: SetWindowPositionPayload): Promise<void>;
     setIgnoreMouse(p: SetIgnoreMousePayload): Promise<void>;
     setAlwaysOnTop(on: boolean): Promise<void>;
-    openSettings(): Promise<void>;
     focus(): Promise<void>;
   };
   menu: {
     popupContext(p: ContextMenuPayload): Promise<void>;
     onResult(cb: (r: ContextMenuResult) => void): () => void;
-  };
-  notify: {
-    show(p: NotifyPayload): Promise<void>;
-  };
-  dialog: {
-    /** 弹出原生文件选择框，让用户选自定义提示音文件，返回路径或 null */
-    pickAudio(): Promise<string | null>;
-  };
-  audio: {
-    /** 试听一个提示音（系统名或文件路径） */
-    preview(sound: string): Promise<void>;
-  };
-  reminder: {
-    state(): Promise<{ state: string; remainingMs: number }>;
-    skipRest(): Promise<void>;
-    pauseAll(paused: boolean): Promise<void>;
-    onEnterResting(cb: () => void): () => void;
-    onExitResting(cb: () => void): () => void;
-    onMealTrigger(cb: (meal: 'breakfast' | 'lunch' | 'dinner') => void): () => void;
   };
   characters: {
     list(): Promise<ReadonlyArray<CharacterMeta>>;
@@ -100,6 +76,9 @@ export interface PreloadApi {
   power: {
     onSuspend(cb: () => void): () => void;
     onResume(cb: () => void): () => void;
+  };
+  cursor: {
+    onUpdate(cb: (p: CursorUpdatePayload) => void): () => void;
   };
 }
 

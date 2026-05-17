@@ -7,9 +7,7 @@ import type { SettingsStore } from './store.js';
 const log = createLogger('shortcuts');
 
 interface Handlers {
-  pauseReminders: () => void;
   toggleVisible: () => void;
-  openSettings: () => void;
 }
 
 export class ShortcutsManager {
@@ -40,9 +38,7 @@ export class ShortcutsManager {
   private applyAll(): void {
     this.unregister();
     const s = this.store.get();
-    this.tryRegister(s.shortcuts.pauseReminders, this.handlers.pauseReminders);
     this.tryRegister(s.shortcuts.toggleVisible, this.handlers.toggleVisible);
-    this.tryRegister(s.shortcuts.openSettings, this.handlers.openSettings);
   }
 
   private tryRegister(accelerator: string, handler: () => void): void {

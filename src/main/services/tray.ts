@@ -1,9 +1,12 @@
-// 系统托盘（macOS 状态栏）
+// 系统托盘（macOS 状态栏）：左键弹菜单，菜单内可选角色 / 主题 / 置顶 / 退出
 
-import { Tray, Menu, BrowserWindow, app, nativeImage } from 'electron';
+import { Tray, Menu, BrowserWindow, nativeImage } from 'electron';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { existsSync } from 'node:fs';
+import type { UserSettings } from '@shared/domain/settings.js';
+import type { SettingsStore } from './store.js';
+import { buildAppMenuTemplate } from './menu.js';
 import { createLogger } from '@shared/utils/logger.js';
 
 const log = createLogger('tray');
@@ -13,9 +16,8 @@ let tray: Tray | null = null;
 
 interface TrayDeps {
   getMainWindow: () => BrowserWindow | null;
-  onTogglePause: () => boolean; // 返回新的暂停状态
-  isPaused: () => boolean;
-  onOpenSettings: () => void;
+  store: SettingsStore;
+  onSwitchCharacter: (id: string) => void;
 }
 
 function findIconPath(): string | null {
@@ -34,11 +36,8 @@ export function createTray(deps: TrayDeps): Tray | null {
   if (tray) return tray;
 
   const iconPath = findIconPath();
-  // 无图标时用空 image，托盘仍会出现，显示文字 fallback
   const image = iconPath ? nativeImage.createFromPath(iconPath) : nativeImage.createEmpty();
-  if (iconPath) {
-    image.setTemplateImage(true);
-  }
+  if (iconPath) image.setTemplateImage(true);
 
   try {
     tray = new Tray(image);
@@ -50,8 +49,9 @@ export function createTray(deps: TrayDeps): Tray | null {
   tray.setToolTip('桌面小小英雄');
   if (!iconPath) tray.setTitle('小');
 
+  // 每次点击都重建菜单，保证 radio / checkbox 当前状态最新
   const rebuild = (): void => {
-    const menu = Menu.buildFromTemplate([
+    const items: Electron.MenuItemConstructorOptions[] = [
       {
         label: '显示/聚焦',
         click: () => {
@@ -62,22 +62,33 @@ export function createTray(deps: TrayDeps): Tray | null {
           win.focus();
         },
       },
-      {
-        label: deps.isPaused() ? '恢复提醒' : '暂停提醒',
-        click: () => {
-          deps.onTogglePause();
-          rebuild();
+      { type: 'separator' },
+      ...buildAppMenuTemplate({
+        getCurrentCharacter: () => deps.store.get().selectedCharacterId,
+        getTheme: () => deps.store.get().theme,
+        isWindowOnTop: () => deps.store.get().windowOnTop,
+        onSwitchCharacter: deps.onSwitchCharacter,
+        onSetTheme: (theme: UserSettings['theme']) => {
+          deps.store.patch({ theme });
+          log.info(`theme changed → ${theme}`);
         },
-      },
-      { type: 'separator' },
-      { label: '设置...', click: () => deps.onOpenSettings() },
-      { type: 'separator' },
-      { label: '退出', click: () => app.quit() },
-    ]);
-    tray?.setContextMenu(menu);
+        onToggleWindowOnTop: () => {
+          const next = !deps.store.get().windowOnTop;
+          deps.store.patch({ windowOnTop: next });
+          const win = deps.getMainWindow();
+          if (next) win?.setAlwaysOnTop(true, 'screen-saver');
+          else win?.setAlwaysOnTop(false);
+          log.info(`window on-top toggled → ${next}`);
+        },
+      }),
+    ];
+    tray?.setContextMenu(Menu.buildFromTemplate(items));
   };
 
   rebuild();
+  // settings 变化时（如 renderer 端改了主题）重建菜单让 radio 同步
+  deps.store.onChange(() => rebuild());
+
   return tray;
 }
 

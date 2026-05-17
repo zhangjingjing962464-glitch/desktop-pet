@@ -1,7 +1,7 @@
 // Three.js 场景管理：透明 WebGL + 正交相机
 
 import * as THREE from 'three';
-import { computeFrustumSize } from '@shared/constants/physical.js';
+import { computeFrustumSize, CAMERA_Y_LIFT_RATIO } from '@shared/constants/physical.js';
 
 export class SceneManager {
   readonly scene: THREE.Scene;
@@ -41,6 +41,9 @@ export class SceneManager {
   resize(cssWidth: number, cssHeight: number): void {
     this.renderer.setSize(cssWidth, cssHeight, false);
     this.applyFrustum();
+    // setSize 会重置 framebuffer（preserveDrawingBuffer:false），立即补一帧避免
+    // 在 renderLoop 下一个 tick 之前 paint 出空白画面（缩放/窗口变化瞬间闪烁）。
+    this.render();
   }
 
   private applyFrustum(): void {
@@ -54,7 +57,7 @@ export class SceneManager {
     // 把相机抬高让模型整体偏向窗口下部：
     //   系数 0~1 控制模型脚底在窗口高度的位置（1 = 完全贴底，0 = 屏幕中线）
     //   随 frustum 缩放保持稳定的相对位置（缩放/窗口变化时不漂）
-    const cameraY = (frustumSize / 2) * 0.65;
+    const cameraY = (frustumSize / 2) * CAMERA_Y_LIFT_RATIO;
     this.camera.position.y = cameraY;
     this.camera.lookAt(this.camera.position.x, cameraY, 0);
     this.camera.updateProjectionMatrix();

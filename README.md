@@ -35,7 +35,7 @@
   - 早 / 午 / 晚饭点提醒
   - 双模式可同开：**通知 + 提示音**（8 个 macOS 系统音 + 自定义音频文件） / **招牌动作**（模型放最大切到最顶层，演 5 分钟）
 - **Apple Liquid Glass 风格设置面板**：浅色 / 深色 / 跟随系统
-- **状态栏图标**：圆形 + 五角星（模板图，自动适配明暗主题）
+- **状态栏图标**：从应用图标自动衍生的角色剪影（模板图，自动适配明暗主题）
 - **右键菜单**：快速切角色 / 窗口置顶 / 暂停提醒 / 退出
 
 ---
@@ -73,9 +73,17 @@ npm run dist:mac
 ### 状态栏图标 / 应用图标重新生成
 
 ```bash
-node scripts/build-tray-icon.mjs   # 输出 assets/icons/tray*.png
-node scripts/build-app-icon.mjs    # 需要 assets/icons/app-source.png 源图
+# 仅重生托盘剪影（任何人 clone 后都能跑，输入是 assets/icons/icon.png）
+npm run scripts:icons:tray
+
+# 重生应用主图标（需要 assets/icons/app-source.png 源图，仓库未跟踪）
+npm run scripts:icons:app
+
+# 一键全生（先 app 后 tray，因为 tray 依赖 icon.png）
+npm run scripts:icons
 ```
+
+> 托盘图标流水线：按 `icon.png` 的 alpha 通道找 bounding box，截取上半身（顶部 55% 高度），lanczos3 两段缩放至 256 → 16/32/48，最后 alpha gamma 修正 + RGB 置黑（macOS Template Image 规范）。
 
 ### 测试
 

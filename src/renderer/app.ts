@@ -11,14 +11,12 @@ import { CharacterRegistry } from './character/character-registry.js';
 import { AnimationManager } from './animation/animation-manager.js';
 import { RandomScheduler } from './animation/random-scheduler.js';
 import { PixelHitTester } from './input/pixel-hit-test.js';
-import { WheelZoom } from './input/wheel-zoom.js';
 import { DragController } from './input/drag-controller.js';
 import { ClickRouter } from './input/click-router.js';
 import { ContextMenuTrigger } from './input/context-menu.js';
 import { weightedPick } from '@shared/utils/math.js';
-import { pickLongestAction } from './animation/longest-action.js';
 import { SOCIAL_ANIMS, DRAG_ANIMS, SETTLE_ANIMS } from '@shared/domain/animation.js';
-import { cmToPx, computeWindowPx, computeActionWindowPx } from '@shared/constants/physical.js';
+import { DEFAULT_SIZE_CM, cmToPx } from '@shared/constants/physical.js';
 import { INTERACTION_TIME_SCALE } from '@shared/constants/time.js';
 import { createLogger } from '@shared/utils/logger.js';
 
@@ -52,7 +50,6 @@ class App {
   private readonly clickRouter = new ClickRouter();
   private readonly dragController = new DragController();
   private readonly contextMenu = new ContextMenuTrigger();
-  private wheelZoom: WheelZoom | null = null;
   private dragResumeRandom: (() => void) | null = null;
   private currentCharacterId: string | null = null;
   private ppi = 96;
@@ -64,9 +61,8 @@ class App {
   private switchInProgress = false;
   private pendingSwitchId: string | null = null;
 
-  /** 动态窗口大小：动作期间扩窗口，idle 时收回 */
+  /** 动作期间的引用计数（其他代码可能依赖；窗口已固定，不再扩缩） */
   private actionDepth = 0;
-  private currentSizeCm = 2;
 
   constructor(canvas: HTMLCanvasElement) {
     this.sceneMgr = new SceneManager(canvas);
@@ -81,15 +77,17 @@ class App {
     if (!window.pet) throw new Error('preload api (window.pet) 未就绪');
 
     this.fit();
-    window.addEventListener('resize', () => this.fit());
+    // 用 ResizeObserver 替代 window resize 监听：layout 后 paint 前的同步阶段触发，
+    // 避免 commit setSize 后那一帧 drawingBuffer 与 canvas CSS 不匹配导致的跳闪。
+    const ro = new ResizeObserver(() => this.fit());
+    ro.observe(document.documentElement);
 
     const settings = await window.pet.settings.get();
     const display = await window.pet.display.getMetrics();
     this.ppi = display.estimatedPpi;
-    this.currentSizeCm = settings.sizeCm;
-    log.info(`settings: character=${settings.selectedCharacterId} size=${settings.sizeCm}cm ppi=${this.ppi}`);
+    log.info(`settings: character=${settings.selectedCharacterId} size=${DEFAULT_SIZE_CM}cm ppi=${this.ppi}`);
     // 同步 modelPx 给 SceneManager，确保 frustum 与窗口尺寸匹配
-    this.sceneMgr.setModelPx(cmToPx(settings.sizeCm, this.ppi));
+    this.sceneMgr.setModelPx(cmToPx(DEFAULT_SIZE_CM, this.ppi));
 
     // 注入 GPU 各向异性上限给 loader，让所有材质贴图在缩放后保留瞳孔/睫毛细节
     this.loader.maxAnisotropy = this.sceneMgr.renderer.capabilities.getMaxAnisotropy();
@@ -120,36 +118,21 @@ class App {
     }
 
     // 输入层
-    this.installInput(settings.sizeCm);
+    this.installInput();
 
     // 取消启动预热：5MB GLB 解析阻塞 main thread 影响交互；改为切换时按需加载
 
     // 监听设置变更（右键切换角色会写设置）
     log.info('[trace] app: registering settings.onChange listener');
     const off = window.pet.settings.onChange((next) => {
-      console.warn('[settings-onChange-fired]', JSON.stringify({ selectedCharacterId: next.selectedCharacterId, cur: this.currentCharacterId, sizeCm: next.sizeCm }));
-      log.info(`[trace] settings.onChange selectedCharacterId=${next.selectedCharacterId} cur=${this.currentCharacterId} sizeCm=${next.sizeCm}`);
+      console.warn('[settings-onChange-fired]', JSON.stringify({ selectedCharacterId: next.selectedCharacterId, cur: this.currentCharacterId }));
+      log.info(`[trace] settings.onChange selectedCharacterId=${next.selectedCharacterId} cur=${this.currentCharacterId}`);
       if (next.selectedCharacterId !== this.currentCharacterId) {
         log.info(`[trace] -> dispatch switchCharacter ${next.selectedCharacterId}`);
         void this.switchCharacter(next.selectedCharacterId);
       }
-      if (this.wheelZoom && Math.abs(next.sizeCm - this.wheelZoom.getSizeCm()) > 0.01) {
-        this.wheelZoom.setSizeCm(next.sizeCm);
-        this.applyWindowSize(next.sizeCm);
-      }
     });
     log.info(`[trace] app: settings.onChange listener registered, off=${typeof off}`);
-
-    // 工作-休息-饭点
-    window.pet.reminder.onEnterResting(() => void this.onEnterResting());
-    window.pet.reminder.onExitResting(() => void this.onExitResting());
-    window.pet.reminder.onMealTrigger((meal) => {
-      const label = { breakfast: '早餐', lunch: '午餐', dinner: '晚餐' }[meal] ?? '吃饭';
-      showToast(`${label}时间到啦`, 4000);
-      void this.withExpandedWindow(async () => {
-        await this.playPick(SOCIAL_ANIMS);
-      });
-    });
 
     // 渲染循环
     this.renderLoop.onTick((dt) => {
@@ -285,7 +268,7 @@ class App {
 
   // ---- 输入层 ----
 
-  private installInput(initialSizeCm: number): void {
+  private installInput(): void {
     const root: Window = window;
 
     // 右键菜单
@@ -301,7 +284,7 @@ class App {
       this.clickRouter.setDragging(dragging);
       if (dragging) {
         this.dragResumeRandom = this.scheduler?.pauseFor('dragging') ?? null;
-        void this.enterAction(); // 拖拽期间窗口扩展
+        void this.enterAction();
         void this.playPick(DRAG_ANIMS, { repeat: true });
       } else {
         this.dragResumeRandom?.();
@@ -310,41 +293,15 @@ class App {
         void this.playPick(SETTLE_ANIMS);
       }
     });
-
-    // 滚轮缩放
-    this.wheelZoom = new WheelZoom(initialSizeCm);
-    this.wheelZoom.attach(root);
-    this.wheelZoom.onChange((cm) => {
-      this.applyWindowSize(cm);
-      void window.pet.settings.patch({ sizeCm: cm });
-    });
   }
 
-  private applyWindowSize(cm: number): void {
-    this.currentSizeCm = cm;
-    const modelPx = cmToPx(cm, this.ppi);
-    const totalPx = this.actionDepth > 0 ? computeActionWindowPx(modelPx) : computeWindowPx(modelPx);
-    this.sceneMgr.setModelPx(modelPx);
-    void window.pet.window.setSize({ widthPx: totalPx, heightPx: totalPx, anchor: 'center' });
-  }
-
-  /** 进入动作：窗口扩到 ACTION 倍数（重入计数，仅 0→1 时实际扩窗口） */
+  /** 进入动作：仅维护引用计数（窗口已固定，无需扩缩） */
   private async enterAction(): Promise<void> {
-    if (this.actionDepth === 0) {
-      const modelPx = cmToPx(this.currentSizeCm, this.ppi);
-      const totalPx = computeActionWindowPx(modelPx);
-      await window.pet.window.setSize({ widthPx: totalPx, heightPx: totalPx, anchor: 'center' });
-    }
     this.actionDepth++;
   }
 
   private async leaveAction(): Promise<void> {
     this.actionDepth = Math.max(0, this.actionDepth - 1);
-    if (this.actionDepth === 0) {
-      const modelPx = cmToPx(this.currentSizeCm, this.ppi);
-      const totalPx = computeWindowPx(modelPx);
-      await window.pet.window.setSize({ widthPx: totalPx, heightPx: totalPx, anchor: 'center' });
-    }
   }
 
   private async withExpandedWindow<T>(fn: () => Promise<T>): Promise<T> {
@@ -361,29 +318,6 @@ class App {
     await this.withExpandedWindow(async () => {
       await this.playPick(SOCIAL_ANIMS);
     });
-    void this.playIdle();
-  }
-
-  private restResumeRandom: (() => void) | null = null;
-
-  /** 进入休息：暂停随机调度，播最长动画 */
-  private async onEnterResting(): Promise<void> {
-    log.info('enter resting');
-    showToast('该休息一下啦，小英雄陪你～', 4000);
-    this.restResumeRandom = this.scheduler?.pauseFor('resting') ?? null;
-    const clip = this.controller ? pickLongestAction(this.controller.clips) : null;
-    if (clip && this.animationManager) {
-      await this.animationManager.play(clip.name);
-      // 播完保持 Idle 循环
-      void this.playIdle();
-    }
-  }
-
-  /** 退出休息：恢复 idle + 随机调度 */
-  private async onExitResting(): Promise<void> {
-    log.info('exit resting');
-    this.restResumeRandom?.();
-    this.restResumeRandom = null;
     void this.playIdle();
   }
 
@@ -424,7 +358,8 @@ export async function startApp(): Promise<void> {
   const canvas = document.getElementById('pet-canvas') as HTMLCanvasElement | null;
   if (!canvas) throw new Error('canvas not found');
   const app = new App(canvas);
-  // mousemove 必须在 window 上全局追踪（鼠标穿透时 canvas 收不到事件）
-  window.addEventListener('mousemove', (e) => app.trackMouse(e.clientX, e.clientY));
+  // 鼠标位置来自主进程主动轮询（screen.getCursorScreenPoint），
+  // 不依赖 mousemove 事件，避免穿透模式下 forward 在 macOS 失效造成的死锁
+  window.pet.cursor.onUpdate(({ x, y }) => app.trackMouse(x, y));
   await app.start();
 }

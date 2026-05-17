@@ -1,19 +1,5 @@
 // 时间常量
 
-export const DEFAULT_WORK_MINUTES = 60;
-export const DEFAULT_REST_MINUTES = 5;
-
-export const MIN_WORK_MINUTES = 1;
-export const MAX_WORK_MINUTES = 180;
-export const MIN_REST_MINUTES = 1;
-export const MAX_REST_MINUTES = 60;
-
-export const DEFAULT_MEAL_TIMES = {
-  breakfast: '07:30',
-  lunch: '12:00',
-  dinner: '18:30',
-} as const;
-
 /** 随机动作触发间隔（毫秒） */
 export const RANDOM_ACTION_MIN_MS = 5_000;
 export const RANDOM_ACTION_MAX_MS = 10_000;
